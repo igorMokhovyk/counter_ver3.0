@@ -3,20 +3,28 @@ import React, {useState} from "react";
 
 function AddAndDelete(props) {
 
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState('');
+
+
 
     const inputValue = (event) => {
         setValue(+event.target.value)
     }
+
+    const addButtonHandler = () => {
+        props.addButton(value);
+        setValue('');
+    }
+
     return (
 
 
 
         <div>
 
-            <button onClick={() => props.addButton(value)}>Add</button>
+            <button onClick={addButtonHandler}>Add</button>
             <button onClick={props.deleteButton}>Delete</button>
-            <input type='text' onChange={inputValue}/>
+            <input type='text' onChange={inputValue} value={value}/>
 
         </div>
     )
